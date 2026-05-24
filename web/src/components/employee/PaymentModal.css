@@ -1,0 +1,29 @@
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(0,0,0,.5);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem;
+}
+.payment-modal { max-width: 360px; width: 100%; }
+.payment-modal__header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1rem;
+}
+.payment-modal__header h2 { font-size: 1.1rem; font-weight: 700; }
+.payment-order-num { color: var(--tx-2); font-size: .9rem; }
+.payment-total { font-size: 1rem; margin: .5rem 0 1.5rem; }
+.payment-options { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+.payment-option {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: .5rem;
+  padding: 1.5rem 1rem;
+  border: 2px solid var(--border); border-radius: var(--radius);
+  background: var(--bg-card); color: var(--tx-2);
+  font-size: .95rem; font-weight: 600;
+  transition: all .2s;
+}
+.payment-option:hover   { border-color: var(--primary); color: var(--primary); }
+.payment-option.selected {
+  border-color: var(--primary);
+  background: #FF6B3511;
+  color: var(--primary);
+}

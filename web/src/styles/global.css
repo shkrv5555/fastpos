@@ -1,0 +1,130 @@
+/* ─── CSS Dəyişənləri ───────────────────────────────────────────────────────── */
+:root {
+  /* Rənglər */
+  --bg:        #F8F9FA;
+  --bg-card:   #FFFFFF;
+  --bg-2:      #F1F3F5;
+  --border:    #E9ECEF;
+
+  --primary:   #FF6B35;   /* narıncı — fast food tonu */
+  --primary-d: #E85A24;
+  --success:   #2DC653;
+  --warning:   #FFC300;
+  --danger:    #E63946;
+  --info:      #4361EE;
+
+  --tx-1:      #212529;
+  --tx-2:      #6C757D;
+  --tx-3:      #ADB5BD;
+
+  --radius:    12px;
+  --radius-sm: 8px;
+  --shadow:    0 2px 12px rgba(0,0,0,.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,.12);
+
+  --font: 'Inter', system-ui, sans-serif;
+}
+
+/* ─── Reset ─────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background:  var(--bg);
+  color:       var(--tx-1);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+button { cursor: pointer; font-family: inherit; }
+a { color: inherit; text-decoration: none; }
+
+/* ─── Seqment rəngləri ───────────────────────────────────────────────────────── */
+.segment-simple  { --seg-color: var(--info); }
+.segment-fast    { --seg-color: var(--primary); }
+.segment-premium { --seg-color: #7C3AED; }
+
+/* ─── Spinner ────────────────────────────────────────────────────────────────── */
+.spinner {
+  width: 36px; height: 36px;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── Kart ───────────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+/* ─── Düymə ──────────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+  padding: .6rem 1.2rem;
+  border: none; border-radius: var(--radius-sm);
+  font-size: .9rem; font-weight: 600;
+  transition: opacity .15s, transform .1s;
+  white-space: nowrap;
+}
+.btn:active { transform: scale(.97); }
+.btn:disabled { opacity: .5; pointer-events: none; }
+
+.btn-primary   { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-d); }
+.btn-success   { background: var(--success); color: #fff; }
+.btn-danger    { background: var(--danger);  color: #fff; }
+.btn-outline   { background: transparent; border: 1.5px solid var(--border); color: var(--tx-1); }
+.btn-ghost     { background: transparent; color: var(--tx-2); }
+.btn-sm        { padding: .35rem .75rem; font-size: .8rem; }
+.btn-lg        { padding: .85rem 1.75rem; font-size: 1rem; }
+.btn-full      { width: 100%; }
+
+/* ─── Badge ──────────────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex; align-items: center;
+  padding: .2rem .6rem;
+  border-radius: 99px;
+  font-size: .75rem; font-weight: 600;
+}
+.badge-pending   { background: #FFF3CD; color: #856404; }
+.badge-confirmed { background: #CCE5FF; color: #004085; }
+.badge-preparing { background: #FFE0CC; color: #8B3A00; }
+.badge-ready     { background: #D4EDDA; color: #155724; }
+.badge-completed { background: #D1ECF1; color: #0C5460; }
+.badge-cancelled { background: #F8D7DA; color: #721C24; }
+
+/* ─── Input ──────────────────────────────────────────────────────────────────── */
+.input {
+  width: 100%; padding: .65rem .9rem;
+  border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+  font-size: .9rem; font-family: var(--font);
+  background: var(--bg-card); color: var(--tx-1);
+  transition: border-color .15s;
+  outline: none;
+}
+.input:focus { border-color: var(--primary); }
+
+/* ─── Layout helpers ─────────────────────────────────────────────────────────── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+.flex      { display: flex; }
+.flex-col  { display: flex; flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-1  { gap: .5rem; }
+.gap-2  { gap: 1rem; }
+.gap-3  { gap: 1.5rem; }
+.mt-1   { margin-top: .5rem; }
+.mt-2   { margin-top: 1rem; }
+.mt-3   { margin-top: 1.5rem; }
+.p-1    { padding: .5rem; }
+.p-2    { padding: 1rem; }
+.p-3    { padding: 1.5rem; }
+.text-sm { font-size: .85rem; }
+.text-muted { color: var(--tx-2); }
+.font-bold { font-weight: 700; }
+.text-right { text-align: right; }

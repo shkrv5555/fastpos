@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: fastpos-backend
+    env: node
+    region: frankfurt
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EMPLOYEE_EXPIRES_IN
+        value: 8h
+      - key: JWT_EXPIRES_IN
+        value: 24h
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+      - key: RATE_LIMIT_MAX
+        value: "200"
+      - key: AUTH_RATE_LIMIT_MAX
+        value: "10"

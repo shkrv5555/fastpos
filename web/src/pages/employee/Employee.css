@@ -1,0 +1,114 @@
+/* ─── Login ──────────────────────────────────────────────────────────────────── */
+.emp-login-page {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg); padding: 1rem;
+}
+.emp-login-card { max-width: 400px; width: 100%; }
+.emp-login-title {
+  font-size: 1.5rem; font-weight: 800;
+  margin-bottom: 1.5rem; text-align: center;
+}
+.emp-login-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: .4rem; }
+.form-group label { font-size: .85rem; font-weight: 600; color: var(--tx-2); }
+.input-wrap { position: relative; }
+.input-icon {
+  position: absolute; left: .75rem; top: 50%;
+  transform: translateY(-50%); color: var(--tx-3);
+}
+.input-with-icon { padding-left: 2.2rem; }
+.form-error { color: var(--danger); font-size: .85rem; text-align: center; }
+
+/* ─── Dashboard layout ───────────────────────────────────────────────────────── */
+.emp-dashboard {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  background: var(--bg);
+}
+
+/* Navbar */
+.emp-navbar {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: .5rem;
+  padding: .75rem 1.5rem;
+  background: var(--primary); color: #fff;
+  position: sticky; top: 0; z-index: 100;
+}
+.emp-navbar__name { font-weight: 700; font-size: .95rem; }
+.emp-nav-links { display: flex; gap: .25rem; flex-wrap: wrap; }
+.emp-nav-link {
+  display: inline-flex; align-items: center; gap: .3rem;
+  padding: .45rem .85rem;
+  border: none; border-radius: var(--radius-sm);
+  font-size: .85rem; font-weight: 600;
+  color: rgba(255,255,255,.85);
+  background: transparent;
+  transition: background .15s;
+  text-decoration: none; cursor: pointer;
+}
+.emp-nav-link:hover,
+.emp-nav-link.active {
+  background: rgba(255,255,255,.2); color: #fff;
+}
+
+/* Content */
+.emp-content { flex: 1; padding: 1.5rem; }
+.emp-page-title {
+  font-size: 1.35rem; font-weight: 800;
+  margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: .75rem;
+}
+.order-count {
+  background: var(--primary); color: #fff;
+  font-size: .8rem; font-weight: 700;
+  padding: .15rem .55rem; border-radius: 99px;
+}
+
+/* Empty state */
+.emp-empty {
+  text-align: center; padding: 4rem 2rem;
+  color: var(--tx-3);
+}
+.emp-empty p { font-size: 1.1rem; font-weight: 600; margin-bottom: .5rem; }
+.emp-empty span { font-size: .9rem; }
+
+/* ─── Sifariş kartları ───────────────────────────────────────────────────────── */
+.orders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+.order-card { padding: 1.25rem; }
+.order-card--pending   { border-top: 3px solid var(--warning); }
+.order-card--confirmed { border-top: 3px solid var(--info); }
+.order-card--preparing { border-top: 3px solid var(--primary); }
+.order-card--ready     { border-top: 3px solid var(--success); }
+
+.order-card__header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 1rem;
+}
+.order-number { font-size: 1rem; font-weight: 800; display: block; }
+.order-time   { font-size: .78rem; color: var(--tx-3); }
+
+.order-card__items { margin-bottom: .75rem; list-style: none; }
+.order-card__item {
+  display: flex; justify-content: space-between;
+  font-size: .875rem; padding: .3rem 0;
+  border-bottom: 1px dashed var(--border);
+}
+.order-card__item:last-child { border-bottom: none; }
+
+.order-notes {
+  font-size: .82rem; color: var(--tx-2);
+  background: var(--bg-2); border-radius: var(--radius-sm);
+  padding: .5rem .75rem; margin-bottom: .75rem;
+}
+.order-card__total {
+  display: flex; justify-content: space-between;
+  font-size: 1rem; margin-bottom: .5rem;
+}
+.total-amount { font-weight: 800; color: var(--primary); }
+.order-payment { font-size: .82rem; color: var(--tx-2); margin-bottom: .75rem; }
+.order-card__actions { display: flex; gap: .5rem; flex-wrap: wrap; }
