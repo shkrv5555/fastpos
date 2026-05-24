@@ -49,18 +49,21 @@ async function seed() {
     `);
 
     // 5. Məhsullar
-    await client.query(`
-      INSERT INTO products (name, description, base_price, segment, stock_qty)
-      SELECT * FROM (VALUES
-        ('Klassik Burqer', 'Ət, pendir, pomidor, xiyar, yarpaq', 8.50,  'simple',  50),
-        ('Fast Burqer',    'Xüsusi sous ilə sürətli klassik',     9.00,  'fast',    40),
-        ('Premium Burqer', 'Wagyu əti, trüf sous, emmental',      18.00, 'premium', 20),
-        ('Kartof Qızartması', 'Xüsusi ədviyyat ilə',              4.00,  'simple',  80),
-        ('Cola 0.5L',      'Soyuq içki',                          2.50,  'simple',  100),
-        ('Ayran',          'Ev ayranı',                           2.00,  'fast',    60)
-      ) AS v(name, description, base_price, segment, stock_qty)
-      WHERE NOT EXISTS (SELECT 1 FROM products WHERE products.name = v.name)
-    `);
+    const productData = [
+      ['Klassik Burqer',    'Ət, pendir, pomidor, xiyar, yarpaq', 8.50,  'simple',  50],
+      ['Fast Burqer',       'Xüsusi sous ilə sürətli klassik',    9.00,  'fast',    40],
+      ['Premium Burqer',    'Wagyu əti, trüf sous, emmental',     18.00, 'premium', 20],
+      ['Kartof Qızartması', 'Xüsusi ədviyyat ilə',                4.00,  'simple',  80],
+      ['Cola 0.5L',         'Soyuq içki',                         2.50,  'simple',  100],
+      ['Ayran',             'Ev ayranı',                          2.00,  'fast',    60],
+    ];
+    for (const [name, desc, price, seg, qty] of productData) {
+      await client.query(`
+        INSERT INTO products (name, description, base_price, segment, stock_qty)
+        VALUES ($1, $2, $3, $4::product_segment, $5)
+        ON CONFLICT DO NOTHING
+      `, [name, desc, price, seg, qty]);
+    }
 
     await client.query('COMMIT');
     console.log('✅ Seed məlumatlar daxil edildi.');

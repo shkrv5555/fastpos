@@ -141,7 +141,7 @@ CREATE TRIGGER trg_order_number
 CREATE INDEX IF NOT EXISTS idx_orders_status  ON orders(status);
 CREATE INDEX IF NOT EXISTS idx_orders_created ON orders(created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_orders_session ON orders(session_id);
-CREATE INDEX IF NOT EXISTS idx_orders_date    ON orders(DATE(created_at));
+CREATE INDEX IF NOT EXISTS idx_orders_date    ON orders(created_at);
 
 -- ─── Sifariş məhsulları ───────────────────────────────────────────────────────
 
