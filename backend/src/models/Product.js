@@ -44,9 +44,9 @@ const Product = {
                pwd.discount_id, pwd.discount_type, pwd.discount_value, pwd.final_price,
                c.name, tsp.total_sold, tsp.total_revenue
       ORDER BY
-        CASE WHEN p.segment = 'fast'    THEN COALESCE(tsp.total_sold, 0) END DESC NULLS LAST,
-        CASE WHEN p.segment = 'premium' THEN COALESCE(tsp.total_revenue, 0) END DESC NULLS LAST,
-        p.sort_order, p.name
+        CASE WHEN pwd.segment = 'fast'    THEN COALESCE(tsp.total_sold, 0) END DESC NULLS LAST,
+        CASE WHEN pwd.segment = 'premium' THEN COALESCE(tsp.total_revenue, 0) END DESC NULLS LAST,
+        pwd.sort_order, pwd.name
     `, params);
 
     return rows;
